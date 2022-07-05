@@ -6,15 +6,15 @@ const xss = require("xss-clean");
 const rateLimiter = require("express-rate-limit");
 
 const authRouter = require("./routes/authRouter");
-const productsRouter = require("./routes/productsRouter");
+const itemsRouter = require("./routes/itemsRouter");
 
 const app = express();
-
+app.use(express.json());
 app.get("/", (req, res) => {
   res.send("Heritage Foods Limited");
 });
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/products", productsRouter);
+app.use("/api/v1/items", itemsRouter);
 
 const port = process.env.PORT || 3000;
 
